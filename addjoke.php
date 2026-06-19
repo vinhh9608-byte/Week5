@@ -6,7 +6,8 @@ if(isset($_POST['joketext'])&& isset($_POST['img'])){
         $sql = 'INSERT INTO JOKES SET
         img = :img,
         joketext = :joketext,
-        jokedate = CURDATE()';
+        jokedate = CURDATE()
+        authorid = 1';
         $stmt = $pdo->prepare($sql);
         $stmt->bindValue(':joketext', $_POST['joketext']);
         $stmt->bindValue(':img',$_POST['img']);
