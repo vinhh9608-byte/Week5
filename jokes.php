@@ -2,7 +2,7 @@
 try {
     include 'includes/DatabaseConnection.php';
 
-    $sql = 'select jokes.id, joketext, `name`, email, category.id as cate_id, category_name From jokes
+    $sql = 'select jokes.id, jokedate, img, joketext, `name`, email, category.id as cate_id, category_name From jokes
     INNER join author on authorid = author.id
     INNER join category on jokes.categoryid = category.id';   
 
