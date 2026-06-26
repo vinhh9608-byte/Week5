@@ -1,10 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+
 <body>
     <p><?=$totalJokes?> jokes have been submitted to the Internet Joke Database.</p>
     <table class = "table">
@@ -45,7 +39,7 @@
                 <input type="submit" value="Delete">
             </form>
             </td>
+        </tr>
             <?php endforeach; ?>
     </table>
 </body>
-</html>
