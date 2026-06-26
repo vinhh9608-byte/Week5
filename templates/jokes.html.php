@@ -6,6 +6,7 @@
     <title>Document</title>
 </head>
 <body>
+    <p><?=$totalJokes?> jokes have been submitted to the Internet Joke Database.</p>
     <table class = "table">
         <tr>
             <th>Joke Text</th>

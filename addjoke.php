@@ -1,16 +1,17 @@
 <?php
-if(isset($_POST['joketext'])&& isset($_POST['img'])){
+if(isset($_POST['joketext'])){
     try{
         include 'includes/DatabaseConnection.php';
 
         $sql = 'INSERT INTO JOKES SET
-        img = :img,
         joketext = :joketext,
         jokedate = CURDATE(),
-        authorid = 1';
+        authorid = :authorid,
+        categoryid = :categoryid';
         $stmt = $pdo->prepare($sql);
         $stmt->bindValue(':joketext', $_POST['joketext']);
-        $stmt->bindValue(':img',$_POST['img']);
+        $stmt->bindValue(':authorid',$_POST['authors']);
+        $stmt->bindValue(':categoryid',$_POST['categories']);
         $stmt->execute();
         header('location: jokes.php');
 
@@ -19,7 +20,12 @@ if(isset($_POST['joketext'])&& isset($_POST['img'])){
         $output = 'Database error: ' . $e->getMessage();
     }
 }else{
+    include 'includes/DatabaseConnection.php';
     $title = 'Add a new joke';
+    $sql_a = 'Select * from author';
+    $authors = $pdo->query($sql_a);
+    $sql_c = 'Select * from category';
+    $categories = $pdo->query($sql_c);
     ob_start();
     include 'templates/addjoke.html.php';
     $output = ob_get_clean();

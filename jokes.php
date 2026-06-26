@@ -1,6 +1,7 @@
 <?php
 try {
     include 'includes/DatabaseConnection.php';
+    include 'includes/DataBaseFunctions.php';
 
     $sql = 'select jokes.id, jokedate, img, joketext, `name`, email, category.id as cate_id, category_name From jokes
     INNER join author on authorid = author.id
@@ -8,6 +9,7 @@ try {
 
     $jokes = $pdo->query($sql);
     $title = 'Jokes List';
+    $totalJokes = totalJokes($pdo);
 
     ob_start();
     include 'templates/jokes.html.php';
